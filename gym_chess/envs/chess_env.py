@@ -49,6 +49,8 @@ class ChessEnv(gym.Env):
         """
         self.alt_reset()
 
+        action = self.all_possible_actions[action]
+
         reward = self._generate_reward(action)
 
         self.env.push_uci(action)
