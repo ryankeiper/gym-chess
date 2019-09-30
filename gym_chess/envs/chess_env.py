@@ -152,7 +152,11 @@ class ChessEnv(gym.Env):
                     state[row][col] = piece_enum
                     col += 1
             row += 1
+        
+        moves_array = np.full(self.all_possible_actions.shape, False)
+        print(moves_array)
         legal_moves = self._get_legal_move_list()
+        print(self.all_possible_actions.index(legal_moves))
         return [state, legal_moves]
 
     def _update_reward(self, current_reward):
