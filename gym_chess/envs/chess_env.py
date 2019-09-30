@@ -171,6 +171,8 @@ class ChessEnv(gym.Env):
         """Assign rewards to moves, captures, queening, checks, and winning"""
         reward = 0.0
         piece_map = self.env.piece_map()
+        print('Action is:')
+        print(action)
 
         to_square = chess.Move.from_uci(action).to_square
         if to_square in piece_map.keys():
