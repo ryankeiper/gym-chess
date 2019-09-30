@@ -2,6 +2,8 @@ import gym
 from gym import error, spaces, utils
 from gym.utils import seeding
 
+from random import randrange
+
 import numpy as np
 
 try:
@@ -49,7 +51,11 @@ class ChessEnv(gym.Env):
         """
         self.alt_reset()
 
-        action = self.all_possible_actions[action]
+        legal_action_moves = self._get_legal_move_list()
+
+        action = legal_action_moves[randrange(len(legal_action_moves))]
+
+        # action = self.all_possible_actions[action]
 
         reward = self._generate_reward(action)
 
